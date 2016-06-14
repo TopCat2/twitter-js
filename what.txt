@@ -1,0 +1,1 @@
+What's the plan? app.js will be our main application. Static (unchanging) files in public will be automatically served when requested, and files in routes and views will let us define dynamic content.
