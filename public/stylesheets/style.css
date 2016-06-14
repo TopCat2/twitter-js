@@ -47,8 +47,10 @@ code {
 .name{
   font-weight:bold;
 }
+
 ul{
-  list-style-image:url('"https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg');
+  list-style-image:url('https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg');
+
 }
 .tweetbox img {
   float: left;

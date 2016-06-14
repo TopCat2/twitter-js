@@ -1,6 +1,10 @@
 var express = require( 'express' );
 var swig=require('swig');
 var routes = require("./routes");
+var bodyParser = require("body-parser");
+
+
+
 
 
 var app = express(); // creates an instance of an express application
@@ -11,11 +15,22 @@ app.use(express.static('public'));
 swig.setDefaults({ cache: false });
 
 
+
 // app.use(function(req, res, next) {
 // 	console.log("Request with method: ", req.method, "and path", req.path);
 // 	next();
 // });
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+app.use(function(req, resp, next) {
+	console.log ("req body is", req.body);
+	next();
+});
 
 app.use('/', routes);
 
