@@ -7,6 +7,7 @@ var app = express(); // creates an instance of an express application
 app.engine('html',swig.renderFile);
 app.set('view engine','html');
 app.set('views',__dirname + '/views');
+app.use(express.static('public'));
 swig.setDefaults({ cache: false });
 
 
