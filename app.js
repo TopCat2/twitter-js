@@ -2,7 +2,7 @@ var express = require( 'express' );
 var swig=require('swig');
 var routes = require("./routes");
 var bodyParser = require("body-parser");
-
+var socketio = require('socket.io');
 
 
 
@@ -32,7 +32,6 @@ app.use(function(req, resp, next) {
 	next();
 });
 
-app.use('/', routes);
 
 // app.get("/", function(req, res, next) {
 //
@@ -53,4 +52,7 @@ app.use('/', routes);
 // res.render( 'index', {title: 'Hall of Fame', people: people} );
 // })
 
-app.listen(3000);
+var server = app.listen(3000);
+var io = socketio.listen(server);
+
+app.use('/', routes(io));

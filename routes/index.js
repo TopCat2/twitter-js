@@ -1,3 +1,5 @@
+module.exports=function(io){
+
 var express = require('express');
 var router = express.Router();
 // could use one line instead: var router = require('express').Router();
@@ -26,7 +28,8 @@ router.post('/tweets', function(req, res) {
   var name = req.body.name;
   var text = req.body.text;
   tweetBank.add(name, text);
+  io.sockets.emit('new_tweet', {name: name, text: text });
   res.redirect('/');
 });
-
-module.exports = router;
+return router;
+}
